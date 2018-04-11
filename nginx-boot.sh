@@ -24,6 +24,10 @@ events {
 http {
     access_log /dev/stdout;
     error_log /dev/stdout info;
+  
+    real_ip_header      X-Forwarded-For;
+    real_ip_recursive   on;
+    set_real_ip_from    10.0.0.0/8;
 
     geo \$ingress {
         default 0;
